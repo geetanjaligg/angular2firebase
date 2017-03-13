@@ -1,9 +1,43 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+<div class="row " style="padding-top:40px;">
+    <h3 class="text-center"> ANGULAR2 FIREBASE CHAT </h3>
+    <br><br>
+    <div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                HISTORY
+            </div>
+            <div class="panel-body">
+				<ul class="media-list">
 
-<ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item.$value}}
-  </li>
-</ul>
+                    <li class="media" *ngFor="let msg of msgs | async">
+
+                                        <div class="media-body">
+
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    {{msg.message}}
+                                                    <br>
+                                                   <small class="text-muted">{{msg.user}} | {{msg.date | date: "dd MMMM yyyy 'at' h:mma"}}</small>
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                </ul>
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                	<input type="text" style="width: 30%;" class="form-control col-md-4" placeholder="Enter Name" #name>
+                    <input type="text" style="width: 70%;" class="form-control col-md-6" placeholder="Enter Message" #newmessage>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="button" (click)="sendMsg(name,newmessage)">SEND</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+  </div>

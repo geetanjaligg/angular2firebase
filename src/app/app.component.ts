@@ -7,9 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  items: FirebaseListObservable<any[]>;
+  msgs: FirebaseListObservable<any[]>;
   constructor(af: AngularFire) {
-    this.items = af.database.list('/items');
+    this.msgs = af.database.list('/chats');
   }
-  title = 'app works!';
+  sendMsg(name: HTMLInputElement, msg: HTMLInputElement) {
+  	console.log("pring msg",msg,new Date().getTime())
+    this.msgs.push({user:name.value,message:msg.value, date: new Date().getTime()});
+    name.value = null;
+    msg.value = null;
+  }
+  title = 'app msgs';
 }
